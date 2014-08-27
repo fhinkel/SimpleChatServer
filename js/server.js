@@ -1,3 +1,4 @@
+
 const port=1337;
 
 var statisticFile = require('./statisticFile');
@@ -35,4 +36,3 @@ statisticFile.readPreviousNumberOfUsers(function(number){
 var server = app.listen(port,function(){
     console.log('Listening on port %d', server.address().port);
 });
-
