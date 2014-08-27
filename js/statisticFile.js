@@ -1,31 +1,50 @@
 var filesystem = require('fs');
-const fileName = "serverlog.log";
-var userCount=0;
-
-readFile = function(){
-    filesystem.readFile(fileName, function(error,data) {
-        if(error) {
-            console.log(error);
-        } else {
-            userCount=data;
-            console.log("Data:" + data);
-        }
-
-    })
-}
+var fileServerCountLog = "servercountlog.log";
+var fileServerNameLog = "servernamelog.log";
+var userName;
 
 
-writeFile = function(content){
+writeMyFile = function(fileName ,content){
     filesystem.writeFile(fileName, content, function(error) {
         if(error) {
             console.log(error);
         } else {
-            console.log("File was saved!");
+            //next();
         }
-    })
+    });
+};
+
+exports.readPreviousNumberOfUsers = function(next){
+    filesystem.readFile(fileServerCountLog, function(error,data) {
+            if (!error) {
+                next(data.toString());
+            } else {
+                console.log(error);
+            }
+        }
+    );
 }
 
+exports.writeNewNumberOfUsers = function(userCount, next){
+    filesystem.writeFile(fileServerCountLog, userCount, function(error) {
+        if(error) {
+            console.log(error);
+        } else {
+            next();
+        }
+    });
+};
 
-writeFile(5);
-readFile();
-console.log("UserCount: " + userCount);
+exports.addUserNameToLog = function(userName){
+    var allNames;
+    filesystem.readFile(fileServerNameLog, function(error,allNames) {
+        if (!error) {
+            allNames += "\n " + userName;
+            writeMyFile(fileServerNameLog, allNames);
+
+        } else {
+            console.log(error);
+        }
+
+    });
+};
