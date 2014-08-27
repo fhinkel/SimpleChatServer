@@ -19,7 +19,13 @@ exports.readPreviousNumberOfUsers = function(next){
             if (!error) {
                 next(data.toString());
             } else {
-                next(0);
+                if(error.errno==34)
+                {
+                //console.log("no readable file");
+                next(0);}
+                else{
+                    console.log(error);
+                }
             }
         }
     );
@@ -43,8 +49,13 @@ exports.addUserNameToLog = function(userName){
             writeMyFile(fileServerNameLog, allNames);
 
         } else {
-            writeMyFile(fileServerNameLog, userName);
-            //console.log(error);
+            if(error.errno==34)
+            {
+                //console.log("no readable file");
+                writeMyFile(fileServerNameLog, userName);}
+            else{
+                console.log(error);
+            }
         }
 
     });
