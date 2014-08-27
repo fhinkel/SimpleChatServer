@@ -19,7 +19,7 @@ exports.readPreviousNumberOfUsers = function(next){
             if (!error) {
                 next(data.toString());
             } else {
-                console.log(error);
+                next(0);
             }
         }
     );
@@ -43,7 +43,8 @@ exports.addUserNameToLog = function(userName){
             writeMyFile(fileServerNameLog, allNames);
 
         } else {
-            console.log(error);
+            writeMyFile(fileServerNameLog, userName);
+            //console.log(error);
         }
 
     });
