@@ -28,6 +28,7 @@ exports.emitConnectionMessages = function(io, userlist){
                 userlist.push(msg);
                 socket.username = msg;
                 console.log("userlist nach befuellen " + userlist.toString());
+                //io.emit('userList', userlist);
             }
         });
 

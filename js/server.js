@@ -14,9 +14,9 @@ app.get('/statistics', function(req,res){
     res.send("Here you can see our statistics");
 });
 
-app.get('/:user', function(req,res){
+/*app.get('/:user', function(req,res){
     res.send("Hello " + req.param('user'));
-});
+});*/
 
 
 chatUsersHandling.emitConnectionMessages(io, userlist);

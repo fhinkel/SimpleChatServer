@@ -11,3 +11,11 @@ $('form').submit(function(){
 socket.on('broadcast', function(msg){
     $('#messages').append($('<li>').text(msg));
 });
+
+/*
+socket.on('userList', function(userlist){
+    for (var index=0; index<userlist.length();index++)
+    {
+        $('#userList').append($('<li>').text(userlist[index]));
+    }
+});*/
