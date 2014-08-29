@@ -4,10 +4,13 @@ exports.emitConnectionMessages = function(io, userlist){
     io.on('connection', function(socket){
 
         io.emit('broadcast', 'a user connected');
+        console.log('a user connected');
 
         socket.on('disconnect', function(){
+            console.log('user disconnected');
             io.emit('broadcast', 'user ' + socket.username+ ' disconnected');
             userlist = deleteUsername(userlist, socket.username);
+            console.log("userlist nach loeschen " + userlist.toString());
         });
 
 
@@ -24,6 +27,7 @@ exports.emitConnectionMessages = function(io, userlist){
                 }
                 userlist.push(msg);
                 socket.username = msg;
+                console.log("userlist nach befuellen " + userlist.toString());
             }
         });
 
