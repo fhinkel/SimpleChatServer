@@ -3,7 +3,7 @@ var assert = require('assert');
 
 describe('Hello World function', function() {
     it('should always fail', function() {
-        assert.equal(true, true);
+        assert.equal(false, true);
     });
 
     it('should just say hello', function() {
