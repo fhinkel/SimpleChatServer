@@ -1,15 +1,16 @@
 {
-    "name": "SimpleChatServer",
-    "version": "0.0.0",
-    "main": "server.js",
-    "scripts": {
-        "test": "./node_modules/.bin/mocha tests"
-    },
-    "author": "",
-    "license": "BSD-2-Clause",
-    "dependencies": {
-    },
-    "devDependencies": {
-        "mocha": "~1.21.4"
-    }
+  "name": "SimpleChatServer",
+  "version": "0.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha tests"
+  },
+  "author": "",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "express": "~4.13.3"
+  },
+  "devDependencies": {
+    "mocha": "~1.21.4"
+  }
 }
