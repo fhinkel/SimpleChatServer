@@ -1,6 +1,5 @@
 var http = require('http');
 var util = require('./util');
-var file = require('.file_system.file');
 var counter=0;
 
 http.createServer(function (req, res) {
