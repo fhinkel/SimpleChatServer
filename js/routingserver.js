@@ -1,31 +1,29 @@
 var http = require('http');
-var util = require('./util');
 var filter = require('./filter');
+var util = require('./util');
 
 var url = require('url');
 
 var counter;
 
 http.createServer(function (req, res) {
-    var answer = util.helloWorld();
-
-    console.log(req.url);
+    var answer;
 
     var pathname = url.parse(req.url).pathname;
     console.log('pathname: ' + pathname);
 
-    if (pathname.indexOf('/chat') > -1) {
-        console.log('++++++++++++++++ found ++++++++++++++++');
+    if (filter.filterChat(pathname, '/chat')) {
+        answer = pathname;
         counter = counter + 1;
-    } else {
-        console.log('++++++++++++++++ not found ++++++++++++++++');
-        answer = 'counter: ' + counter;
 
+    } else if (filter.filterChat(pathname, '/admin')) {
+        answer = 'counter: ' + counter;
+    } else {
+        answer = util.helloWorld();
     }
 
-
     res.writeHead(200, {'Content-Type': 'text/plain'});
-    res.end(answer + pathname);
+    res.end(answer);
 
     console.log(counter);
 
