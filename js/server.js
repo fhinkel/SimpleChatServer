@@ -1,17 +1,21 @@
 var http = require('http');
 var util = require('./util');
-var express =require('node_modules/express')
+var fs = require('fs');
+
 
 http.createServer(function (req, res) {
-    var answer =  util.helloWorld() + (i+1);
+
+    if (req.url === '/favicon.ico') {
+        var img = fs.readFileSync('../images/favicon.ico');   //read file from local directory
+        res.writeHead(200, {'Content-Type': 'image/x-icon'}); //write header file
+        res.end(img, 'binary');  //send image as response
+    }
+
+    var answer =  util.helloWorld();
     res.writeHead(200, {'Content-Type': 'text/plain'});
     res.end(answer);
-    i++;
-    console.log(i);
+
 }).listen(1337, '127.0.0.1');
 
-var i = 0;
 
-console.log('Server running at http://127.0.0.1:1337/');
-
-app.use('/favicon.ico', express.static('images/favicon.ico'));
+console.log('Server with favicon running at http://127.0.0.1:1337/');
