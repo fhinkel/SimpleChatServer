@@ -3,6 +3,9 @@ var app = express();
 var counterAdmin = 0;
 var counterUser = 0;
 
+app.get('/', function (req, res) {
+    res.send('Hello..schreibe deinen Namen hinter den Slash!');
+});
 
 app.get('/admin', function (req, res) {
     res.send('Hello admin!\n admin: '+ counterAdmin++ + '\n user: ' + counterUser);
