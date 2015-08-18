@@ -13,6 +13,7 @@ http.createServer(function (req, res) {
     file.dateischreiben('optsPath/file_system/testdatei.txt',counter);
 
 
+
 }).listen(1337, '127.0.0.1' );
 //counter = 0;
 console.log('Server running at http://127.0.0.1:1337/');
