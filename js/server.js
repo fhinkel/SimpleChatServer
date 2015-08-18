@@ -6,10 +6,7 @@ var lastUrl = '';
 http.createServer(function (req, res) {
     var answer =  util.helloWorld();
     res.writeHead(200, {'Content-Type': 'text/plain'});
-    switch(req.url)
-    {
-    	lastUrl = req.url;
-    }
+
     counter++;
     console.log('Counter: ' + counter);
     res.end(answer);
