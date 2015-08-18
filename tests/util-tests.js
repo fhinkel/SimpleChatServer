@@ -10,6 +10,6 @@ describe('Hello World function', function() {
 
     it('should just say hello', function() {
         var answer = util.helloWorld();
-        assert.equal('Hello World\n', answer);
+        assert.equal('Hello World, wie geht es euch?\n', answer);
     });
 });
