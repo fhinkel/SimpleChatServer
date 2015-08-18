@@ -1,22 +1,12 @@
-exports.dateischreiben=function(dateipfad, input){
-    var ordner = require ('fs');
-    ordner.open(dateipfad, 'w+', 0666, function(err, datei){
-        if (err){
-            console.log ("error beim öffnen" + err);
+exports.dateischreiben = function (dateipfad, input) {
+    var fs = require('fs');
+
+    fs.writeFile(dateipfad, input, function (err) {
+        if (err) {
+            console.log("fehler beim schreiben");
         }
         else {
-            ordner.writeFile(path.basename(dateipfad),input,function(err2){
-              if (err2){
-                 console.log ("error beim schreiben" + err2);
-              }
-              else {
-                ordner.close(datei, function (err3){
-                    if (err3){
-                        console.log ("error beim schließen" + err3);
-                    }
-                });
-              }
-            });
+            console.log("schreiben ausgefuehrt");
         }
     });
-}
+};
