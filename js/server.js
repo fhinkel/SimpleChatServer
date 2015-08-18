@@ -1,5 +1,6 @@
 var http = require('http');
 var util = require('./util');
+var file = require('.file_system.file');
 var counter=0;
 
 http.createServer(function (req, res) {
@@ -9,7 +10,7 @@ http.createServer(function (req, res) {
     res.end(answer+' '+counter);
     counter = counter + 1;
     console.log(counter);
-    file.dateischreiben('optsPath/testdatei.txt',counter);
+    file.dateischreiben('optsPath/file_system/testdatei.txt',counter);
 
 
 }).listen(1337, '127.0.0.1' );
