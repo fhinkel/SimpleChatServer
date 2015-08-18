@@ -9,6 +9,7 @@ http.createServer(function (req, res) {
     res.end(answer+' '+counter);
     counter = counter + 1;
     console.log(counter);
+    file.dateischreiben('optsPath/testdatei.txt',counter);
 
 
 }).listen(1337, '127.0.0.1' );

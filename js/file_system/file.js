@@ -5,17 +5,18 @@ exports.dateischreiben=function(dateipfad, input){
             console.log ("error beim öffnen" + err);
         }
         else {
-            ordner.writeFile(path.basename(dateiname),input,function(err2){
-              if (err2)
-                 console.log ("error beim schreiben" + err2)
+            ordner.writeFile(path.basename(dateipfad),input,function(err2){
+              if (err2){
+                 console.log ("error beim schreiben" + err2);
               }
               else {
                 ordner.close(datei, function (err3){
-                    console.log ("error beim schließen" + err3);
-                })
+                    if (err3){
+                        console.log ("error beim schließen" + err3);
+                    }
+                });
               }
-            })
+            });
         }
     });
-
 }
