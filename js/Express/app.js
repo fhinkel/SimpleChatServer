@@ -14,5 +14,5 @@ app.get('/user/:id', function (req, res) {
 });
 
 var server = app.listen(1338, function () {
-    console.log('Example app listening at http://127.0.0.1:1338', host, port);
+    console.log('Example app listening at http://127.0.0.1:1338');
 });
