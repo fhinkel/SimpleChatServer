@@ -1,3 +1,3 @@
 exports.helloWorld = function() {
-    return 'Hello World\n';
+    return 'Hello World, wie geht es euch?\n';
 };
