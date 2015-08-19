@@ -1,4 +1,10 @@
 language: node_js
 node_js:
-  - "0.12"
-  - "0.10"
+- '0.12'
+- '0.10'
+deploy:
+  provider: engineyard
+  api_key:
+    secure: qQhLu+3MIn9T4vFGgleVkLBh1fcmLmtGaiV0tvxOkh+ULASDMP0A/FoyIvWmjHgA7B3EiYWRuqsSWTgACGCSQiQVAueNGYqVBJkzL7Mu9zu7AsfgqAJJDXyARzFGg1eMmujOoCyDKck08reIz22iqS+Qyt3Y6LyMGy919jT5SWo=
+  on:
+    repo: fhinkel/SimpleChatServer
