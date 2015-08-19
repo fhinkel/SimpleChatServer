@@ -5,8 +5,7 @@ node_js:
 deploy:
   provider: engineyard
   api_key:
-    secure: qQhLu+3MIn9T4vFGgleVkLBh1fcmLmtGaiV0tvxOkh+ULASDMP0A/FoyIvWmjHgA7B3EiYWRuqsSWTgACGCSQiQVAueNGYqVBJkzL7Mu9zu7AsfgqAJJDXyARzFGg1eMmujOoCyDKck08reIz22iqS+Qyt3Y6LyMGy919jT5SWo=
+    secure: EWQF/zBXDDOSlH2x6E3Puoyt31J/X4XFcWzZyMUPaGWQbXnJrbxZhtxBMPP5rpWvV1z8ZedjYO3dI7Q8ghCFPERU+CHQplLzdnYTWurTBr/TKDKbWV2Bh2302TklH02u6fA4u644zNj1yA01SqNg5BZSkXQsxMWAtCeGvot7Olc=
   on:
     repo: fhinkel/SimpleChatServer
-
 sudo: false
