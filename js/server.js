@@ -43,7 +43,7 @@ var greeting = function (req, res) {
     }
 };
 
-var server = http.createServer(greeting).listen(port, 'localhost');
+var server = http.createServer(greeting).listen(port);
 
 server.on('close', function() {
     console.log('server closing');
