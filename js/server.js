@@ -4,7 +4,7 @@ var fs = require('fs');
 
 var counter;
 var tempCounter = 0;
-var port = 1337;
+var port = process.env.PORT || 3000;
 var filename = __dirname + '/../counter.txt';
 
 fs.readFile(filename, function (err, data) {
