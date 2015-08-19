@@ -8,4 +8,5 @@ deploy:
     secure: EWQF/zBXDDOSlH2x6E3Puoyt31J/X4XFcWzZyMUPaGWQbXnJrbxZhtxBMPP5rpWvV1z8ZedjYO3dI7Q8ghCFPERU+CHQplLzdnYTWurTBr/TKDKbWV2Bh2302TklH02u6fA4u644zNj1yA01SqNg5BZSkXQsxMWAtCeGvot7Olc=
   on:
     repo: fhinkel/SimpleChatServer
+    on: node: '0.10'
 sudo: false
