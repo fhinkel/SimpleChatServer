@@ -1,4 +1,4 @@
-var requestHandlers = require('./requestHandlers');
+var requestHandlers = require('./../routes/requestHandlers');
 
 function route(pathname, handle, filepath, Logger, response) {
 
