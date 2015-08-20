@@ -22,9 +22,13 @@
 <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script src="/socket.io/socket.io.js"></script>
 <script>
-    var socket = io();   //connect to server socket
+    var socket = io();
+
+    // Connect to server socket
+    var username = location.search.substring(1);
+
     jQuery('form').submit(function(){
-        socket.emit('chat message', jQuery('#m').val());
+        socket.emit('chat message', username + ' ' + jQuery('#m').val());
         jQuery('#m').val('');
         return false;
     });
