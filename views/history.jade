@@ -1,0 +1,13 @@
+extends layout
+block content
+    h1
+        Chat History
+    ul
+        each chat in history
+            li
+                #{chat.chat}= chat.chat
+                //each entry in chat
+                //    li
+                //        #{Chat.text} = entry.date + "  " += entry.loginName + ":" + entry.chatmessage
+
+
