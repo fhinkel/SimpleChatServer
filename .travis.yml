@@ -1,0 +1,17 @@
+language: node_js
+node_js:
+- '0.12'
+- '0.10'
+deploy:
+  provider: engineyard
+  api_key:
+    secure: EWQF/zBXDDOSlH2x6E3Puoyt31J/X4XFcWzZyMUPaGWQbXnJrbxZhtxBMPP5rpWvV1z8ZedjYO3dI7Q8ghCFPERU+CHQplLzdnYTWurTBr/TKDKbWV2Bh2302TklH02u6fA4u644zNj1yA01SqNg5BZSkXQsxMWAtCeGvot7Olc=
+  on:
+    repo: fhinkel/SimpleChatServer
+    node: '0.10'
+sudo: false
+
+# whitelist
+branches:
+  only:
+    - master

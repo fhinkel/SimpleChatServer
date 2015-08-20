@@ -2,31 +2,4 @@ extends layout
 
 block content
   h1= title
-  p Hello, user! Welcome to #{title}
-
-
-  div.leftcolumn
-    strong Chat Verlauf
-    p
-
-    div.chat
-      ul
-        each line in chat
-          strong= line.user + ' ' + line.date
-          p= line.message
-
-
-    //div.send_message
-    form(name="message2", action="/message2", method="post")
-      input(type="text", name="message2")
-      input(type="submit", value="Senden")
-
-  div.rightcolumn
-    strong Users Online
-
-  ul
-    each user in users
-      li= user.name
-
-
-
+  p Welcome to #{title}
