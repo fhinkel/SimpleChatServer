@@ -25,12 +25,15 @@
     var socket = io();   //connect to server socket
     jQuery('form').submit(function(){
         socket.emit('chat message', jQuery('#m').val());
-        jQuery('#m').val() =  '';
+        jQuery('#m').val('');
         return false;
     });
 
     socket.on('chat messages', function(msg){
-        jQuery('#messages').append(jQuery('<li>').text(msg));
+        var now = (new Date()).toJSON();
+        var time = now.substring(11, 19);
+        var newMsg = time + ' ' + msg;
+        jQuery('#messages').append(jQuery('<li>').text(newMsg));
     });
 </script>
 
