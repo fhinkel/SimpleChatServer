@@ -10,3 +10,8 @@ deploy:
     repo: fhinkel/SimpleChatServer
     node: '0.10'
 sudo: false
+
+# whitelist
+branches:
+  only:
+    - master
