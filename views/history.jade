@@ -4,10 +4,8 @@ block content
         Chat History
     ul
         each chat in history
-            li
-                #{chat.chat}= chat.chat
-                //each entry in chat
-                //    li
-                //        #{Chat.text} = entry.date + "  " += entry.loginName + ":" + entry.chatmessage
-
-
+            each item in chat.entry
+                p(style="white-space:pre;")
+                    | date: #{item.datetime}
+                    | name: #{item.loginName}
+                    | message: #{item.chatMessage}
