@@ -8,9 +8,4 @@ router.get('/', function(req, res, next) {
     res.send('Start chat');
 });
 
-router.get('/\*', function(req, res, next) {
-    console.log('admin functions egal was');
-    res.send('Hallo '+req.url.substr(1));
-});
-
 module.exports = router;

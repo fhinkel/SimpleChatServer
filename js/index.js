@@ -5,7 +5,7 @@ var requestHandlers = require('./../routes/requestHandlers');
 var fs = require('fs');
 
 loggerfilepath = __dirname + "\\file_system\\logins.json";
-var Logger;
+var Logger = {'counter':-1};
 
 
 var handle = {};

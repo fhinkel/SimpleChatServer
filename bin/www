@@ -9,14 +9,11 @@ var debug = require('debug')('SimpleChatServer:server');
 var http = require('http');
 var fs = require('fs');
 
-
-var Logger;
-
 /**
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3000');
+var port = normalizePort(process.env.PORT || '3005');
 app.set('port', port);
 
 /**
@@ -24,17 +21,17 @@ app.set('port', port);
  */
 
 var server = http.createServer(app);
+var Chat;
 
 /**
  * Listen on provided port, on all network interfaces.
  */
-fs.readFile(loggerfilepath, function (err, data) {
+fs.readFile('.\\resources\\chat.json', function (err, data) {
     if (err) {
         console.log('Error reading from file: ' + err);
-        Logger.counter = 0;
     } else {
         console.log('We read from file: ' + data);
-        Logger = JSON.parse(data);
+        app.Chat = JSON.parse(data);
     }
     server.listen(port);
     console.log("Server has started.");
