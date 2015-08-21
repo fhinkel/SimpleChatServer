@@ -36,11 +36,11 @@ io.on('connection', function(socket){
     console.log('a user connected');
 
     socket.on('chat message', function (msg) {
+        io.emit('chat messages', msg);
         msg = "{'Message':'"+msg+"'}";
         console.log('message: ' + msg);
-        mongodb_schreiben(msg);
-        io.emit('chat messages', msg);
-    })
+        //mongodb_schreiben(msg);
+   })
 
     //socket.on('disconnect', function(){  //Create disconnect, if client refreshes/exits index.html
     //    console.log('user disconnect');
