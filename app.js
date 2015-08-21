@@ -14,6 +14,18 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
+
+var mongo = require('mongodb');
+var monk = require('monk');
+var db = monk('127.0.0.1:27017/local');
+
+// Make our db accessible to our router
+app.use(function (req, res, next) {
+  req.db = db;
+  next();
+});
+
+
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
