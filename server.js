@@ -1,4 +1,5 @@
-var app = require('express')();
+var express = require('express');
+var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 ///lets require/import the mongodb native drivers.
@@ -9,6 +10,8 @@ var MongoClient = mongodb.MongoClient;
 // Connection URL. This is where your mongodb server is running. ANPASSEN
 var url = 'mongodb://localhost:27017/local';
 
+
+app.use(express.static(__dirname + '/public'));
 
 //Deliver index.html with client javascript code
 app.get('/', function(req, res){
