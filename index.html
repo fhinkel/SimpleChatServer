@@ -31,8 +31,12 @@
         <script>
             var socket = io();   //connect to server socket
             jQuery('form').submit(function () {
-                socket.emit('chat message', jQuery('#name').val() + ': ' + jQuery('#m').val());
-                jQuery('#m').val('');
+
+                if(jQuery('#name').val()) {
+                    socket.emit('chat message', jQuery('#name').val() + ': ' + jQuery('#m').val());
+                    jQuery('#m').val('');
+                }
+
                 return false;
             });
             socket.on('chat messages', function (msg) {
