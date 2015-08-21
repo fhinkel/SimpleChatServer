@@ -2,37 +2,54 @@
 <html>
 <head>
     <title>Socket.IO chat</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font: 13px Helvetica, Arial; }
-        form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
-        form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
-        form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
-        #messages { list-style-type: none; margin: 0; padding: 0; }
-        #messages li { padding: 5px 10px; }
-        #messages li:nth-child(odd) { background: #eee; }
-    </style>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="shortcut icon" href="favicon-01.png" type="image/x-icon">
+
 </head>
 <body>
-<ul id="messages"></ul>
-<form action="javascript:void(0);">
-    <input id="m" autocomplete="off" /><button>Send</button>
-</form>
 
-<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-<script src="/socket.io/socket.io.js"></script>
-<script>
-    var socket = io();   //connect to server socket
-    jQuery('form').submit(function(){
-        socket.emit('chat message', jQuery('#m').val());
-        jQuery('#m').val() =  '';
-        return false;
-    });
+    <div class="leftcolumn">
 
-    socket.on('chat messages', function(msg){
-        jQuery('#messages').append(jQuery('<li>').text(msg));
-    });
-</script>
+        <div class="header">
+
+            <div class="title"><h1>Willkommen bei unserem Sommeruni Chat!</h1></div>
+
+            <div class="chat_button"><a class="history"  href="history.html">Chat Verlauf</a></div>
+        </div>
+
+        <ul id="messages"></ul>
+        <form class="chat_senden" action="javascript:void(0);">
+            <input id="name" autocomplete="off" placeholder="Name"/>
+            <input id="m" autocomplete="off" placeholder="Message" />
+            <button>Send</button>
+        </form>
+
+        <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+            var socket = io();   //connect to server socket
+            jQuery('form').submit(function () {
+                socket.emit('chat message', jQuery('#name').val() + ': ' + jQuery('#m').val());
+                jQuery('#m').val('');
+                return false;
+            });
+            socket.on('chat messages', function (msg) {
+                var now = (new Date()).toJSON();
+                var time = now.substring(11, 19);
+                var newMsg = time + ' ' + msg;
+                jQuery('#messages').append(jQuery('<li>').text(newMsg));
+            });
+        </script>
+    </div>
+
+    <div class="rightcolumn">
+        <h2>Users Online</h2>
+        <div class="users">
+            Users
+        </div>
+    </div>
 
 </body>
 </html>
