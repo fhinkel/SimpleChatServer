@@ -16,18 +16,21 @@
 <body>
 <ul id="messages"></ul>
 <form action="javascript:void(0);">
+    <input id="name" autocomplete="off" />
     <input id="m" autocomplete="off" /><button>Send</button>
 </form>
+
 
 <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script src="/socket.io/socket.io.js"></script>
 <script>
     var socket = io();   //connect to server socket
     jQuery('form').submit(function(){
-        socket.emit('chat message', jQuery('#m').val());
-        jQuery('#m').val() =  '';
+        socket.emit('chat message', jQuery('#name').val() + ': ' + jQuery('#m').val());
+        jQuery('#m').val('');
         return false;
     });
+
 
     socket.on('chat messages', function(msg){
         jQuery('#messages').append(jQuery('<li>').text(msg));
