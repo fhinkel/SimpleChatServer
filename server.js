@@ -46,12 +46,13 @@ io.on('connection', function(socket){
 var port = process.env.PORT || '3000';
 http.listen(port, function(){
     console.log('listening on port ' + port);
-    MongoClient.connect(url, function (err, db) {
+
+/*    MongoClient.connect(url, function (err, db) {
         if (err) {
             console.log('Unable to connect to the mongoDB server. Error:', err);
         }
         else {
             var collection = db.collection('chathistory');
         }
-    });
+    });*/
 });
