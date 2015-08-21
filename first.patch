@@ -1,0 +1,54 @@
+Index: js/routing.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>windows-1252
+===================================================================
+--- js/routing.js	(revision 54b0d603e380c648825e98d2cdcac662b2557249)
++++ js/routing.js	(revision 54b0d603e380c648825e98d2cdcac662b2557249)
+@@ -0,0 +1,23 @@
++var http = require('http');
++var counter = 0;
++var name;
++http.createServer(function (req, res) {
++    var str = req.url;
++    console.log(str);
++    var pos = str.lastIndexOf("/");
++    if(pos!=-1)
++        name =  str.substring(pos+1);
++    if(name!="favicon.ico"){
++         counter++;
++    }
++    if(name=="admin"){
++        res.writeHead(200,{'Content-Type':'text/plain'});
++        res.end("Total logged in "+counter);
++    }
++    else {
++        res.writeHead(200, {'Content-Type': 'text/plain'});
++        res.end("Hallo " + name + "!");
++    }
++}).listen(8080, '127.0.0.1');
++
++console.log('Server running at http://127.0.0.1:8080/');
+Index: package.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>windows-1252
+===================================================================
+--- package.json	(revision 2a8fca106b9a2d3220550949ebf58070d74b2fc4)
++++ package.json	(revision 54b0d603e380c648825e98d2cdcac662b2557249)
+@@ -11,5 +11,6 @@
+     },
+     "devDependencies": {
+         "mocha": "~1.21.4"
++     //   "since": "~1.
+     }
+ }
+\ No newline at end of file
+Index: js/server.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>windows-1252
+===================================================================
+--- js/server.js	(revision 2a8fca106b9a2d3220550949ebf58070d74b2fc4)
++++ js/server.js	(revision cc759b55cee9158a3c5d54949266a506d6a8694f)
+@@ -1,0 +1,0 @@
