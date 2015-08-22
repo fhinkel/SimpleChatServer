@@ -32,9 +32,12 @@
         var socket = io();   //connect to server socket
         jQuery('form').submit(function () {
 
-            if (jQuery('#name').val()) {
-                socket.emit('chat message', jQuery('#name').val() + ': ' + jQuery('#m').val());
-                jQuery('#m').val('');
+
+            var username = jQuery('#name');
+            if (username.val()) {
+                var message = jQuery('#m');
+                socket.emit('chat message', username.val() + ': ' + message.val());
+                message.val('');
             }
 
             return false;
