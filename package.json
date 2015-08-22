@@ -1,5 +1,9 @@
 {
   "name": "SimpleChatServer",
+  "repository" :
+  { "type" : "git"
+  , "url" : "https://github.com/fhinkel/SimpleChatServer"
+  },
   "version": "0.0.0",
   "main": "server.js",
   "scripts": {
