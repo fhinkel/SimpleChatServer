@@ -10,50 +10,51 @@
 </head>
 <body>
 
-    <div class="leftcolumn">
+<div class="leftcolumn">
 
-        <div class="header">
+    <div class="header">
 
-            <div class="title"><h1>Willkommen bei unserem Sommeruni Chat!</h1></div>
+        <div class="title"><h1>Willkommen bei unserem Sommeruni Chat!</h1></div>
 
-            <div class="chat_button"><a class="history"  href="history.html">Chat Verlauf</a></div>
-        </div>
-
-        <ul id="messages"></ul>
-        <form class="chat_senden" action="javascript:void(0);">
-            <input id="name" autocomplete="off" placeholder="Name"/>
-            <input id="m" autocomplete="off" placeholder="Message" />
-            <button>Send</button>
-        </form>
-
-        <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-        <script src="/socket.io/socket.io.js"></script>
-        <script>
-            var socket = io();   //connect to server socket
-            jQuery('form').submit(function () {
-
-                if(jQuery('#name').val()) {
-                    socket.emit('chat message', jQuery('#name').val() + ': ' + jQuery('#m').val());
-                    jQuery('#m').val('');
-                }
-
-                return false;
-            });
-            socket.on('chat messages', function (msg) {
-                var now = (new Date()).toJSON();
-                var time = now.substring(11, 19);
-                var newMsg = time + ' ' + msg;
-                jQuery('#messages').append(jQuery('<li>').text(newMsg));
-            });
-        </script>
+        <div class="chat_button"><a class="history" href="history.html">Chat Verlauf</a></div>
     </div>
 
-    <div class="rightcolumn">
-        <h2>Users Online</h2>
-        <div class="users">
-            Users
-        </div>
+    <ul id="messages"></ul>
+    <form class="chat_senden" action="javascript:void(0);">
+        <input id="name" autocomplete="off" placeholder="Name"/>
+        <input id="m" autocomplete="off" placeholder="Message"/>
+        <button>Send</button>
+    </form>
+
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io();   //connect to server socket
+        jQuery('form').submit(function () {
+
+            if (jQuery('#name').val()) {
+                socket.emit('chat message', jQuery('#name').val() + ': ' + jQuery('#m').val());
+                jQuery('#m').val('');
+            }
+
+            return false;
+        });
+        socket.on('chat messages', function (msg) {
+            var now = (new Date()).toJSON();
+            var time = now.substring(11, 19);
+            var newMsg = time + ' ' + msg;
+            jQuery('#messages').append(jQuery('<li>').text(newMsg));
+        });
+    </script>
+</div>
+
+<div class="rightcolumn">
+    <h2>Users Online</h2>
+
+    <div class="users">
+        Users
     </div>
+</div>
 
 </body>
 </html>
