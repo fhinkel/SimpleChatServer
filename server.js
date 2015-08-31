@@ -2,8 +2,13 @@ var express = require('express');
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
-
+var user;
+var chat;
+var userUndchat;
 app.use(express.static(__dirname + '/public'));
+
+var alleOnlineUser;
+
 
 //Deliver index.html with client javascript code
 app.get('/', function (req, res) {
@@ -16,8 +21,17 @@ io.on('connection', function (socket) {
 
     socket.on('chat message', function (msg) {
         io.emit('chat messages', msg);
-        msg = "{'Message':'" + msg + "'}";
-        console.log('message: ' + msg);
+        //msg enthält user : chat
+       userUndchat = msg.split(":");
+        user = userUndchat[0];
+        chat = userUndchat[1];
+
+
+
+
+
+        console.log('user: ' + user );
+        console.log('chat: ' + chat );
     });
 });
 
