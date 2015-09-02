@@ -2,44 +2,41 @@
 <html>
 <head>
     <title>Socket.IO chat</title>
-
     <link rel="stylesheet" href="style.css">
-
     <link rel="shortcut icon" href="favicon-01.png" type="image/x-icon">
-
 </head>
 <body>
-
 <div class="leftcolumn">
-
     <div class="header">
-
-        <div class="title"><h1>Willkommen bei unserem Sommeruni Chat!</h1></div>
-
-        <div class="chat_button"><a class="history" href="history.html">Chat Verlauf</a></div>
+        <div class="title"><h2>Willkommen bei unserem Sommeruni-Chat!</h2></div>
+        <div class="chat_button"><a class="history" href="history.html">Chat-Verlauf</a></div>
     </div>
-
     <ul id="messages"></ul>
     <form class="chat_senden" action="javascript:void(0);">
         <input id="name" autocomplete="off" placeholder="Name"/>
         <input id="m" autocomplete="off" placeholder="Message"/>
         <button>Send</button>
     </form>
-
     <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script>
+        var firstMsg = true;
+        jQuery(window).on('beforeunload', function() {
+            alert('Bye now');
+        });
         var socket = io();   //connect to server socket
         jQuery('form').submit(function () {
-
-
             var username = jQuery('#name');
             if (username.val()) {
+                if (firstMsg) {
+                    firstMsg = false;
+                    socket.emit('new user', username.val());
+                    username.prop('readonly', true);
+                }
                 var message = jQuery('#m');
                 socket.emit('chat message', username.val() + ': ' + message.val());
                 message.val('');
             }
-
             return false;
         });
         socket.on('chat messages', function (msg) {
@@ -48,16 +45,19 @@
             var newMsg = time + ' ' + msg;
             jQuery('#messages').append(jQuery('<li>').text(newMsg));
         });
+        socket.on('new users', function (msg) {
+            jQuery('#users').append(jQuery('<li>').text(msg).prop('id','user_'+msg));
+        });
+        socket.on('off users', function (msg) {
+            jQuery('#user_'+msg).remove();
+        });
     </script>
 </div>
-
 <div class="rightcolumn">
     <h2>Users Online</h2>
-
     <div class="users">
-        Users
+        <ul id="users"></ul>
     </div>
 </div>
-
 </body>
 </html>
