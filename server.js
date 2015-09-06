@@ -22,6 +22,8 @@ io.on('connection', function (socket) {
     socket.on('chat message', function (msg) {
         io.emit('chat messages', msg);
         //msg enthält user : chat
+
+
        userUndchat = msg.split(":");
         user = userUndchat[0];
         chat = userUndchat[1];
