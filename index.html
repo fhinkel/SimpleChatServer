@@ -36,26 +36,37 @@
             var username = jQuery('#name');
             if (username.val()) {
                 var message = jQuery('#m');
-                socket.emit('chat message', username.val() + ': ' + message.val());
+                socket.emit('chat message', username.val() + ' TRENNER ' + message.val());
                 message.val('');
             }
 
             return false;
         });
-        socket.on('chat messages', function (msg) {
-            var now = (new Date()).toJSON();
-            var time = now.substring(11, 19);
-            var newMsg = time + ' ' + msg;
-            jQuery('#messages').append(jQuery('<li>').text(newMsg));
+
+  socket.on('chat messages', function (msg) {
+    var now = (new Date()).toJSON();
+    var time = now.substring(11, 19);
+    var newMsg = time + ' ' + msg;
+    jQuery('#messages').append(jQuery('<li>').text(newMsg));
+    });
+
+
+        socket.on('Alle User', function (alleUsers) {
+            jQuery('#users').replace(jQuery('<li>').text(alleUsers));
         });
+
+
+
     </script>
+
 </div>
 
 <div class="rightcolumn">
     <h2>Users Online</h2>
 
     <div class="users">
-        Users
+
+
     </div>
 </div>
 
